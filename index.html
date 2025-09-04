@@ -1,0 +1,218 @@
+<div id="form-wrapper" style="max-width: 600px; margin: auto; font-family: Arial, sans-serif; padding: 20px 16px 40px; box-sizing: border-box;">
+  <h2 style="text-align: center; color: #228B22; font-weight: bold; font-size: 28px;">Đặt Lịch Trị Liệu</h2>
+
+  <label><b>1. Bạn biết ĐỨC TÂM qua dịch vụ nào?</b></label><br>
+<div style="font-size: 17px; line-height: 1.6;">
+  <div style="margin-bottom: 3px;">
+    <input type="radio" name="source" value="Youtube/Google"> Youtube/Google
+  </div>
+  <div style="margin-bottom: 3px;">
+    <input type="radio" name="source" value="Facebook"> Facebook
+  </div>
+  <div style="margin-bottom: 3px;">
+    <input type="radio" name="source" value="Tiktok"> Tiktok
+  </div>
+  <div style="margin-bottom: 3px;">
+    <input type="radio" name="source" value="Zalo"> Zalo
+  </div>
+  <div style="margin-bottom: 3px;">
+    <input type="radio" name="source" value="Người Thân"> Người Thân
+  </div>
+</div>
+
+  <hr style="border: 1px solid #ddd; margin: 20px 0;">
+
+  <h3 style="text-align: center; color: #228B22; font-weight: bold; font-size: 25px; margin-bottom: 4px;">Nhập Thông Tin</h3>
+  <p style="text-align: center; font-style: italic; margin-top: 0;">Lưu ý</p>
+
+  <label for="name"><b>2. Họ Tên:</b></label><br>
+  <input type="text" id="name" name="name" placeholder="Nhập họ và tên" style="width: 100%; padding: 8px;"><br><br>
+
+  <label for="phone"><b>3. Số Điện Thoại:</b></label><br>
+  <input type="tel" id="phone" name="phone" placeholder="Nhập số điện thoại" pattern="[0-9]{10,11}" title="Chỉ được nhập số, từ 10-11 chữ số" style="width: 100%; padding: 8px;"><br><br>
+
+  <label for="date"><b>4. Bạn Muốn Đặt Lịch Vào Ngày Nào?</b></label><br>
+  <input type="date" id="date" name="date" value="" style="width: 100%; padding: 8px;"><br><br>
+
+  <label for="time"><b>5. Thời gian nào?</b></label><br>
+  <input type="time" id="time" name="time" value="" style="width: 100%; padding: 8px;"><br><br>
+
+  <hr style="border: 1px solid #ddd; margin: 20px 0;">
+
+  <h3 style="text-align: center; color: #228B22; font-weight: bold; font-size: 25px; margin-bottom: 4px;">Dịch Vụ Liệu Trình</h3>
+  <p style="text-align: center; font-style: italic; margin-top: 0;">Lưu ý: ăn sáng trước khi đến cơ sở trị liệu</p>
+
+  <label><b>7. Bạn muốn phục vụ liệu trình nào?</b></label><br>
+  <div style="font-size: 17px; line-height: 1.6;">
+    <input type="checkbox" name="service" value="1 - Giảm đau đầu, viêm xoang, mất ngủ"> 1 - Giảm đau đầu, viêm xoang, mất ngủ<br>
+    <input type="checkbox" name="service" value="2 - Cổ vai gáy"> 2 - Cổ vai gáy<br>
+    <input type="checkbox" name="service" value="3 - Vùng đau"> 3 - Vùng đau<br>
+    <input type="checkbox" name="service" value="4 - Khai thông kinh lạc toàn thân"> 4 - Khai thông kinh lạc toàn thân<br>
+    <input type="checkbox" name="service" value="5 - Giải cơ thể thao"> 5 - Giải cơ thể thao<br>
+    <input type="checkbox" name="service" value="6 - Tổng hợp"> 6 - Tổng hợp<br>
+    <input type="checkbox" name="service" value="7 - Đánh gió giác hơi"> 7 - Đánh gió giác hơi (dịch vụ thêm)<br><br>
+  </div>
+
+  <label for="note"><b>8. Ghi chú về bệnh của quý khách (nếu có):</b></label><br>
+  <textarea id="note" name="note" rows="4" style="width: 100%; padding: 8px;"></textarea><br><br>
+
+<!-- ✅ Sticky nút gửi và lỗi -->
+  <div style="position: sticky; bottom: 0; background: white; padding-top: 12px; padding-bottom: 20px; text-align: center; z-index: 10;">
+    <div id="error-message" style="display: none; color: red; font-weight: bold; margin-bottom: 10px;"></div>
+    <button id="submit-button" style="padding: 16px 30px; font-size: 20px; font-weight: bold; background-color: green; color: white; border: none; border-radius: 8px; cursor: pointer;">
+      Gửi
+    </button>
+  </div>
+
+ <!-- ✅ Loading spinner -->
+ <div id="loading" style="display: none; text-align: center; margin-top: 20px;">
+    <div class="spinner"></div>
+    <div style="margin-top: 10px; color: #555; font-size: 16px;">Đang gửi dữ liệu...</div>
+  </div>
+
+</div> <!-- <- Đây là div bao toàn bộ form -->
+
+<!-- ✅ Màn hình cảm ơn -->
+<div id="thank-you" style="display: none; max-width: 600px; margin: auto; padding: 100px 20px 50px; text-align: center; font-size: 20px; color: green;">
+  <h2 style="color: #228B22; font-size: 30px;">🎉 ĐỨC TÂM 🎉</h2>
+  <p style="font-size: 25px;">Cảm ơn bạn đã đặt lịch!</p>
+  <p style="font-size: 14px;">Xác nhận lịch của bạn đã đặt thành công.</p>
+  <p style="font-size: 18px;">Điện Thoại : 0941767227</p>
+  <p style="font-size: 18px;">Đ/c: 143/7 Phan Đăng Lưu, P.2, Q. Phú Nhuận, HCM</p>
+  <p style="font-size: 18px;">🕒 Quý Khách vui lòng đến đúng giờ. Nếu có sự thay đổi xin quý khách liên hệ đến cơ sở để được hỗ trợ. Xin cám ơn Quý Khách</p>
+<!-- Nút quay về website -->
+<a href="https://sites.google.com/view/ductamtrilieu?utm_source=thankspage&utm_medium=redirect&utm_campaign=trang-chu" target="_blank" rel="noopener noreferrer"
+   style="display: inline-block; margin-top: 30px; padding: 12px 24px; background-color: #228B22; color: white; font-size: 16px; text-decoration: none; border-radius: 8px;">
+  Nhấn vào đây để xác nhận
+</a>
+</div>
+
+<!-- ✅ Tăng kích cỡ chữ nhập liệu cho mobile -->
+<style>
+  input, textarea, button {
+    font-size: 16px;
+  }
+  
+  .spinner {
+    margin: auto;
+    border: 6px solid #f3f3f3;
+    border-top: 6px solid #228B22;
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    animation: spin 1s linear infinite;
+  }
+
+  @keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+  }
+</style>
+
+<script>
+  // Set ngày tối thiểu là hôm nay (UTC+7)
+  const today = new Date();
+  const timezoneOffset = 7 * 60; // UTC+7
+  today.setMinutes(today.getMinutes() - today.getTimezoneOffset() + timezoneOffset);
+  document.getElementById("date").min = today.toISOString().split("T")[0];
+
+    // ✅ Khi DOM đã load xong, gán sự kiện
+ document.addEventListener("DOMContentLoaded", function () {
+    document.getElementById("submit-button").addEventListener("click", submitForm);
+  });
+
+  // ✅ Hàm hiển thị lỗi bằng khung (thay vì popup alert)
+ function showError(message) {
+    const errorDiv = document.getElementById("error-message");
+    errorDiv.innerText = message;
+    errorDiv.style.display = "block";
+   
+   // Ẩn sau 3 giây (3000ms)
+    setTimeout(() => {
+      errorDiv.style.display = "none";
+    }, 2000);
+  }
+
+  // ✅ Hàm xử lý submit
+  function submitForm(event) {
+    event.preventDefault(); // ✅ Ngăn reload hoặc lỗi submit mặc định trong iframe
+    
+    const name = document.getElementById("name").value.trim();
+    const phone = document.getElementById("phone").value.trim();
+    const date = document.getElementById("date").value;
+    const time = document.getElementById("time").value;
+    const note = document.getElementById("note").value.trim();
+
+    const sourceSelected = document.querySelector('input[name="source"]:checked');
+    const serviceSelected = document.querySelectorAll('input[name="service"]:checked');
+
+   // ✅ Thay vì alert, dùng showError
+   if (!sourceSelected) return showError("Vui lòng chọn bạn biết đến ĐỨC TÂM qua dịch vụ nào.");
+    if (!name) return showError("Vui lòng nhập họ tên.");
+    if (!phone.match(/^[0-9]{10,11}$/)) return showError("Vui lòng nhập số điện thoại hợp lệ (10-11 số).");
+    if (!date) return showError("Vui lòng chọn ngày đặt lịch.");
+    if (!time) return showError("Vui lòng chọn thời gian.");
+    if (serviceSelected.length === 0) return showError("Vui lòng chọn ít nhất một dịch vụ trị liệu.");
+
+     // ✅ Show loading
+    document.getElementById("loading").style.display = "block";
+    const submitBtn = document.getElementById("submit-button");
+    submitBtn.disabled = true;
+    submitBtn.innerText = "Đang gửi...";
+
+    // ✅ Gửi dữ liệu bằng x-www-form-urlencoded (không bị lỗi CORS)
+const formData = new URLSearchParams();
+formData.append("source", sourceSelected.value);    
+formData.append("name", name);
+formData.append("phone", phone);
+formData.append("date", date);
+formData.append("time", time);
+formData.append("service", Array.from(serviceSelected).map(s => s.value).join(", "));
+formData.append("note", note);
+
+fetch("/api/submit", {
+  method: "POST",
+  headers: {
+    "Content-Type": "application/x-www-form-urlencoded"
+  },
+  body: formData.toString()
+})
+.then(response => response.text())
+.then(result => {
+  // Ẩn thông báo lỗi nếu trước đó có
+  document.getElementById("error-message").style.display = "none";
+  
+  // Ẩn form đặt lịch
+  document.querySelector("#form-wrapper").style.display = "none";
+
+  // Hiện màn hình cảm ơn
+  document.getElementById("thank-you").style.display = "block";
+  document.getElementById("loading").style.display = "none";
+  // Cuộn lên đầu trang
+  window.scrollTo(0, 0);
+ 
+  // Gửi tín hiệu cho trang cha để scroll lên đầu (khi trong iframe)
+  if (window.parent !== window) {
+    window.parent.postMessage("scroll-to-top", "*");
+  } else {
+    // Nếu không phải iframe thì tự scroll
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  }
+})
+.catch(error => {
+  alert("Đã xảy ra lỗi khi gửi dữ liệu. Vui lòng thử lại.\n" + error);
+      document.getElementById("loading").style.display = "none";
+      submitBtn.disabled = false;
+      submitBtn.innerText = "Gửi";
+    });
+  }
+</script>
+
+
+
+
+
+
+
+
+
